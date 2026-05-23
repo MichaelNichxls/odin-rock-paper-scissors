@@ -38,3 +38,5 @@ function playGame() {
     console.log("You lose the game! The computer wins!");
   }
 }
+
+playGame()
