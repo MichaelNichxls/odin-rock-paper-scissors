@@ -24,3 +24,17 @@ function playRound(humanChoice, computerChoice, score) {
     return score;
   }
 }
+
+function playGame() {
+  let score = [0, 0];
+  for (let i = 0; i < 5; i++) {
+    score = playRound(getHumanChoice(), getComputerChoice(), score);
+  }
+  if (score[0] === score[1]) {
+    console.log("The game is a tie!");
+  } else if (score[0] > score[1]) {
+    console.log("You win the game!");
+  } else {
+    console.log("You lose the game! The computer wins!");
+  }
+}
