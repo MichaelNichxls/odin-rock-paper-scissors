@@ -9,7 +9,6 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice, score) {
   if (humanChoice === computerChoice) {
     alert("It's a tie!")
-    return score;
   } else if (
     (humanChoice === "rock" && computerChoice === "scissors") ||
     (humanChoice === "paper" && computerChoice === "rock") ||
@@ -17,18 +16,16 @@ function playRound(humanChoice, computerChoice, score) {
   ) {
     alert(`You win! ${humanChoice} beats ${computerChoice}.`);
     score[0]++;
-    return score;
   } else {
     alert(`You lose! ${humanChoice} loses to ${computerChoice}.`);
     score[1]++;
-    return score;
   }
 }
 
 function playGame() {
   let score = [0, 0];
   for (let i = 0; i < 5; i++) {
-    score = playRound(getHumanChoice(), getComputerChoice(), score);
+    playRound(getHumanChoice(), getComputerChoice(), score);
   }
   if (score[0] === score[1]) {
     alert("The game is a tie!");
