@@ -2,6 +2,8 @@ const result = document.querySelector("#result");
 const humanScore = document.querySelector("#human-score");
 const computerScore = document.querySelector("#cpu-score");
 
+const vineboom = new Audio("./assets/audio/moai-vineboom.mp3");
+
 function getHumanChoice() {
   return prompt("What will you play? Rock, Paper, or Scissors:").toLowerCase();
 }
@@ -18,10 +20,10 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === "paper" && computerChoice === "rock") ||
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
-    result.textContent = `You win! ${humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}!`;
+    result.textContent = `You win! ${humanChoice} beats ${computerChoice}!`;
     humanScore.textContent++;
   } else {
-    result.textContent = `You lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} loses to ${computerChoice}!`;
+    result.textContent = `You lose! ${humanChoice} loses to ${computerChoice}!`;
     computerScore.textContent++;
   }
 }
@@ -43,10 +45,11 @@ function resetGame() {
 document.body.addEventListener("click", (e) => {
   switch (e.target.id) {
     case "rock":
+      vineboom.play();
     case "paper":
     case "scissors":
       playRound(e.target.id, getComputerChoice());
-      checkWinner()
+      checkWinner();
       break;
   }
 });

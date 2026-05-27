@@ -4,14 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
-  <script src="./index.js" defer></script>
+  <script src="index.js" defer></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Rock Paper Scissors</h1>
-  <button id="rock">Rock<br>🗿</button>
-  <button id="paper">Paper<br>📝</button>
-  <button id="scissors">Scissors<br>✂️</button>
-  <div id="result">Choose an option to start!</div>
-  <span id="human-score">0</span> - <span id="cpu-score">0</span>
+  <h1 id="title">Rock Paper Scissors</h1>
+  <div id="choices">
+    <button id="rock">Rock<br>🗿</button>
+    <button id="paper">Paper<br>📝</button>
+    <button id="scissors">Scissors<br>✂️</button>
+  </div>
+  <div id="result">Pick your poison...</div>
+  <div id="scores">
+    <img src="assets/images/human.png" alt="human" width="64" height="64">
+    <span id="human-score">0</span> - <span id="cpu-score">0</span>
+    <img src="assets/images/cpu.png" alt="human" width="64" height="64">
+  </div>
 </body>
 </html>
