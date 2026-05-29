@@ -1,55 +1,62 @@
+const choices = document.querySelector("#choices");
+const reset = document.querySelector("#reset button");
 const result = document.querySelector("#result");
-const humanScore = document.querySelector("#human-score");
-const computerScore = document.querySelector("#cpu-score");
+const playerScore = document.querySelector("#player-score");
+const cpuScore = document.querySelector("#cpu-score");
 
 const vineboom = new Audio("./assets/audio/moai-vineboom.mp3");
 
-function getHumanChoice() {
-  return prompt("What will you play? Rock, Paper, or Scissors:").toLowerCase();
+function getPlayerChoice() {
+  return prompt("Rock Paper Scissors").toLowerCase();
 }
 
-function getComputerChoice() {
+function getCpuChoice() {
   return ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
 }
 
-function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
-    result.textContent = "It's a tie!";
+function playRound(playerChoice, cpuChoice) {
+  if (playerChoice === cpuChoice) {
+    result.textContent = `Red's attack missed!`;
   } else if (
-    (humanChoice === "rock" && computerChoice === "scissors") ||
-    (humanChoice === "paper" && computerChoice === "rock") ||
-    (humanChoice === "scissors" && computerChoice === "paper")
+    (playerChoice === "rock" && cpuChoice === "scissors") ||
+    (playerChoice === "paper" && cpuChoice === "rock") ||
+    (playerChoice === "scissors" && cpuChoice === "paper")
   ) {
-    result.textContent = `You win! ${humanChoice} beats ${computerChoice}!`;
-    humanScore.textContent++;
+    result.textContent = `Red used ${playerChoice}! It's super effective!`;
+    playerScore.textContent++;
   } else {
-    result.textContent = `You lose! ${humanChoice} loses to ${computerChoice}!`;
-    computerScore.textContent++;
+    result.textContent = `Red used ${playerChoice}! It's not very effective...`;
+    cpuScore.textContent++;
   }
 }
 
 function checkWinner() {
-  if (humanScore.textContent == 5) {
-    result.textContent = "You scored 5 points! You win the game!";
-  } else if (computerScore.textContent == 5) {
-    result.textContent = "The computer scored 5 points! You lose the game!";
+  if (playerScore.textContent == 5) {
+    result.textContent = "Red got $200 for winning!";
+  } else if (cpuScore.textContent == 5) {
+    result.textContent = "Red fainted!";
+  } else {
+    return
   }
+  reset.style.visibility = "visible";
 }
 
 function resetGame() {
-  result.textContent = "...";
-  humanScore.textContent = 0;
-  computerScore.textContent = 0;
+  result.textContent = "Wild charizard appeared!";
+  playerScore.textContent = 0;
+  cpuScore.textContent = 0;
+  reset.style.visibility = "hidden";
 }
 
-document.body.addEventListener("click", (e) => {
+choices.addEventListener("click", (e) => {
   switch (e.target.id) {
     case "rock":
       vineboom.play();
     case "paper":
     case "scissors":
-      playRound(e.target.id, getComputerChoice());
+      playRound(e.target.id, getCpuChoice());
       checkWinner();
       break;
   }
 });
+reset.addEventListener("click", (e) => resetGame());
