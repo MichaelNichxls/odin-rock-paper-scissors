@@ -25,7 +25,7 @@ body {
   color: var(--accent);
   font-size: clamp(64px, 12vw, 128px);
   font-weight: normal;
-  text-shadow: 4px 4px 0 var(--shadow);
+  text-shadow: clamp(2.5px, 0.5vw, 6px) clamp(2.5px, 0.5vw, 6px) 0 var(--shadow);
   text-align: center;
   margin-inline: auto;
   max-width: 600px;
@@ -54,7 +54,7 @@ body {
 #result {
   color: var(--accent);
   font-size: clamp(24px, 4.5vw, 48px);
-  text-shadow: 2px 2px 0 var(--shadow);
+  text-shadow: clamp(1.25px, 0.25vw, 2.25px) clamp(1.25px, 0.25vw, 2.25px) 0 var(--shadow);
   text-align: center;
   margin-bottom: 4px;
 }
